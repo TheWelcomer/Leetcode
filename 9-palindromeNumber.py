@@ -14,4 +14,3 @@ def isPalindrome(self, x: int) -> bool:
         return False
     
 print(isPalindrome(325, 323))
-print("Hellow World!")
