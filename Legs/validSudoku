@@ -1,0 +1,39 @@
+import collections
+
+def isValidSudoku(board):
+    for i in range(len(board)):
+        row = board[i]
+        newRow = []
+        for item in row:
+            newRow.append(item)
+        if "." in newRow:
+            newRow.remove(".")
+        if newRow == set(newRow):
+            return False
+    for i in range(len(board[0])):
+        col = [row[i] for row in board]
+        if "." in col:
+            col.remove(".")
+        if col == set(col):
+            return False
+    for i in range(3):
+        for k in range(3):
+            square = []
+            for l in range(3):
+                for m in range(3):
+                    square.append(board[i * 3 + l][k * 3 + m])
+            if "." in square:
+                square.remove(".")
+            if square == set(square):
+                return False
+    return True
+    
+print(isValidSudoku([["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]))

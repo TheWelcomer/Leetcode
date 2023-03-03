@@ -1,0 +1,10 @@
+class Solution(object):
+    def productExceptSelf(self, nums):
+        result = [1]
+        for i in range(len(nums) - 1):
+            result.append(result[i - 1] * nums[i])
+        trailing = 1
+        for i in range(len(nums) - 1, 0, -1):
+            trailing *= nums[i]
+            result[i - 1] = (result[i - 1] * trailing)
+        return result
